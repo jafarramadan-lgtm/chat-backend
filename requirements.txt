@@ -2,10 +2,5 @@ fastapi
 uvicorn
 gunicorn
 cloudinary
-datetime
-cloudinary.uploader
 pydantic
-sqlite3
-fastapi.middleware.cors
-smtplib
-random
+python-multipart
