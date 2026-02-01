@@ -44,7 +44,7 @@ class searchname(BaseModel):
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://chat-front-end-s1s9.vercel.app"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
     allow_credentials=True, )
