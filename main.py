@@ -1,6 +1,7 @@
 import random
 from fastapi import FastAPI ,Response,UploadFile,File,HTTPException,Form,WebSocket,WebSocketDisconnect
 import smtplib 
+import ssl
 from fastapi.middleware.cors import CORSMiddleware
 import sqlite3
 from pydantic import BaseModel
@@ -84,14 +85,14 @@ def login(user:dataLogin):
 code=str(random.randint(10000,99999))
 @app.post("/numberget")
 def get_email(email:EmailData):
-    server=smtplib.SMTP('smtp.gmail.com', 587,timeout=10)
-    server.starttls()
-    server.login("ramadangafer5@gmail.com","gbxydxqrprznqvmh")
-    from_addr="ramadangafer5@gmail.com"
-    message="Subject: Hello\n\n this is your Code \n\n"+code
-    server.sendmail(from_addr,email.email,message)
-    server.quit()
-    return {"status":"Code sent to email"} 
+    context=ssl.create_default_context()
+    with smtplib.SMTP_SSL("smtp.gmail.com",465,context=context)as server:
+         server.login("ramadangafer5@gmail.com","gbxydxqrprznqvmh")
+         from_addr="ramadangafer5@gmail.com"
+         message="Subject: Hello\n\n this is your Code \n\n"+code
+         server.sendmail(from_addr,email.email,message)
+         server.quit()
+         return {"status":"Code sent to email"} 
 
 @app.post("/nuumberpost")
 def post_msg(number:NumberData):
