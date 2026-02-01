@@ -14,6 +14,13 @@ cr.execute('''CREATE TABLE IF NOT EXISTS Users
          (id INTEGER PRIMARY KEY AUTOINCREMENT,Email TEXT,Password TEXT,Name TEXT,Profile TEXT,Status Text,lastsenn DATETIME)''')
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True, 
+    allow_methods=["*"],
+    allow_headers=["*"],
+   )
 class EmailData(BaseModel):
     email: str
 class uname(BaseModel):
@@ -42,12 +49,7 @@ class searchname(BaseModel):
     Id:str
 
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-    allow_credentials=True, )
+
 cloudinary.config(
             cloud_name="dpvwrxz33",
             api_key="769168646258211",
