@@ -87,7 +87,7 @@ code=str(random.randint(10000,99999))
 def get_email(email:EmailData):
     context=ssl.create_default_context()
     with smtplib.SMTP_SSL("smtp.gmail.com",465,context=context)as server:
-         server.login("ramadangafer5@gmail.com","gbxydxqrprznqvmh")
+         server.login("ramadangafer5@gmail.com","******")
          from_addr="ramadangafer5@gmail.com"
          message="Subject: Hello\n\n this is your Code \n\n"+code
          server.sendmail(from_addr,email.email,message)
