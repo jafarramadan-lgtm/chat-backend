@@ -52,9 +52,9 @@ class searchname(BaseModel):
 
 
 cloudinary.config(
-            cloud_name="dpvwrxz33",
-            api_key="769168646258211",
-            api_secret="ift-kdREoWE7FYkwGS2BPA9BbCY",
+            cloud_name="****",
+            api_key="*******",
+            api_secret="*****",
             secure=True,)
 @app.get("/")
 def read_root():
